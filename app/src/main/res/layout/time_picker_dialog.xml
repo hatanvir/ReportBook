@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Hour"
+            android:textColor="#000"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/hourPlusBt"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="+"
+
+            />
+
+        <EditText
+            android:id="@+id/hourEt"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:maxLength="2"
+
+            android:inputType="number"
+            android:background="@drawable/bordarless_background"
+            />
+
+        <Button
+            android:id="@+id/hourMinusBt"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="-"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"
+        android:textColor="#000"
+        android:textSize="40dp"
+         />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+     >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Minuit"
+            android:textColor="#000"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/minuitPlusBt"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="+" />
+
+        <EditText
+            android:id="@+id/minuitEt"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:maxLength="2"
+            android:inputType="number"
+            android:background="@drawable/bordarless_background"
+            />
+
+        <Button
+            android:id="@+id/minuitMinusBt"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text="-" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/cancelId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            />
+        <Button
+            android:id="@+id/setId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set"
+            />
+    </LinearLayout>
+</LinearLayout>

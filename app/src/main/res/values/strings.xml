@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Report Book</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prayer">Prayer</string>
+    <string name="quran_recitation">Quran Recitation</string>
+    <string name="hadith_recitation">Hadith Recitation</string>
+    <string name="academic_book">Academic book</string>
+    <string name="novel_or_other_book">Novel or other book</string>
+    <string name="newspaper">Newspaper</string>
+    <string name="skill_development">Skill development</string>
+    <string name="marketing">Marketing</string>
+    <string name="wake_up_time">Wake up time</string>
+    <string name="sleep_time">Sleep time</string>
+    <string name="workout">Workout</string>
+</resources>
