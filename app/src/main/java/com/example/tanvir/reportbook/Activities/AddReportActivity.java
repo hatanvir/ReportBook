@@ -42,14 +42,17 @@ public class AddReportActivity extends AppCompatActivity {
     DatabaseManager databaseManager;
     String dateId="";
 
-    EditText prayerQuantity,quranPageQuantityEt,hadithQuantityEt,academicBookReadingHourEt,novelOrOtherBookEt,skillDevHourEt,wakeUpTimeEt,sleepTimeEt,workOutEt;
+    EditText prayerQuantity,quranPageQuantityEt,hadithQuantityEt,academicBookReadingHourEt,novelOrOtherBookEt,
+            skillDevHourEt,wakeUpTimeEt,sleepTimeEt,workOutEt;
     CheckBox prayerCb,quranCb,hadithCb,academicCb,novelCb,skillCb,workOutCb,newspaperCb,marketingCb;
     ImageView  prayerMinusIm,prayerPlusIm,quranMinusIm,quranPlusIm,hadithminusIm,hadithPlusIm;
-    ImageView academicBookTimeSelectorImg,novelTimeSelectorImg,skillTimeSelectorImg,wakeUpTimeSelectorImg,sleepTimeSelectorImg,workoutTimeSelectorImg;
+    ImageView academicBookTimeSelectorImg,novelTimeSelectorImg,skillTimeSelectorImg,wakeUpTimeSelectorImg,
+            sleepTimeSelectorImg,workoutTimeSelectorImg;
 
     String newspaperStatus ="No";
     String marketingStatus = "No";
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -425,9 +428,6 @@ public class AddReportActivity extends AppCompatActivity {
                         hadithminusIm.setClickable(false);
                         hadithPlusIm.setClickable(false);
                         hadithQuantityEt.setEnabled(false);
-
-                        //quranPageQuantityEt.setBackgroundColor(R.color.colorAccent);
-                        //quranPlusIm.setBackground(Color.DKGRAY);
                     }
                 }
             });
