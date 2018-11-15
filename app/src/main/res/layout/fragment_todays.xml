@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.TodayFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +50,7 @@
                  android:textSize="20sp" />
 
              <ImageView
-                 android:id="@+id/imageView3"
+                 android:id="@+id/nextImg"
                  android:layout_width="25dp"
                  android:layout_height="25dp"
                  android:layout_marginLeft="15dp"
@@ -63,6 +64,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/detailsViewIdLinearLayout"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -816,5 +818,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         apps:layout_anchorGravity="bottom|right|end"
+        android:src="@drawable/plus2"
         />
 </FrameLayout>
