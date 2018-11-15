@@ -25,6 +25,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ import com.ikovac.timepickerwithseconds.MyTimePickerDialog;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddReportActivity extends AppCompatActivity {
     DatabaseManager databaseManager;
@@ -48,6 +50,8 @@ public class AddReportActivity extends AppCompatActivity {
     ImageView  prayerMinusIm,prayerPlusIm,quranMinusIm,quranPlusIm,hadithminusIm,hadithPlusIm;
     ImageView academicBookTimeSelectorImg,novelTimeSelectorImg,skillTimeSelectorImg,wakeUpTimeSelectorImg,
             sleepTimeSelectorImg,workoutTimeSelectorImg;
+    NumberPicker hourNumberPicker,minuitNumberPicker;
+    Button cancelBtn,setBtn;
 
     String newspaperStatus ="No";
     String marketingStatus = "No";
@@ -58,6 +62,7 @@ public class AddReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
         databaseManager = new DatabaseManager(this);
+        //hourNumberPicker.setOnValueChangedListener(onValueChangeListener);
         //dateId = new SimpleDateFormat("ddMMyyyy").format(cal.getTime());
 
 
@@ -268,6 +273,7 @@ public class AddReportActivity extends AppCompatActivity {
             if( quranDur.charAt(0) != '0'){
 
                 quranCb.setChecked(true);
+                quranCb.setEnabled(true);
             }
 
             if(quranCb.isChecked()){
@@ -341,7 +347,6 @@ public class AddReportActivity extends AppCompatActivity {
                         quranMinusIm.setClickable(false);
                         quranPlusIm.setClickable(false);
                         quranPageQuantityEt.setEnabled(false);
-
                         //quranPlusIm.setBackground(Color.DKGRAY);
                     }
                 }
@@ -356,7 +361,7 @@ public class AddReportActivity extends AppCompatActivity {
             String haditQuantity = hadithQuantityEt.getText().toString();
             if( haditQuantity.charAt(0) != '0'){
 
-                quranCb.setChecked(true);
+                hadithCb.setChecked(true);
             }
 
             if(hadithCb.isChecked()){
@@ -834,114 +839,83 @@ public class AddReportActivity extends AppCompatActivity {
         //editText.setBackgroundColor(Color.TRANSPARENT);
     }
     public void customDialog(final EditText mainEditText){
-
         //custom dialog for taking hours and minuit from user
 
 
-        final Dialog dialog = new Dialog(AddReportActivity.this);
+       final Dialog dialog = new Dialog(AddReportActivity.this);
         dialog.setContentView(R.layout.time_picker_dialog);
 
-        final Button hourPlusBt = dialog.findViewById(R.id.hourPlusBt);
-        final Button hourMinusBt = dialog.findViewById(R.id.hourMinusBt);
-        final Button minuitPlusBt = dialog.findViewById(R.id.minuitPlusBt);
-        final Button minuitMinusBt = dialog.findViewById(R.id.minuitMinusBt);
-        final Button setId = dialog.findViewById(R.id.setId);
-        final Button cancelId = dialog.findViewById(R.id.cancelId);
+        dialog.setTitle("Set time duration");
+        //numberpicker
+        hourNumberPicker = dialog.findViewById(R.id.hourNumberPicker);
+        minuitNumberPicker = dialog.findViewById(R.id.minuitNumberPicker);
 
-        final EditText hourEt = dialog.findViewById(R.id.hourEt);
-        final EditText minuitEt = dialog.findViewById(R.id.minuitEt);
+        cancelBtn = dialog.findViewById(R.id.cancelBtn);
+        setBtn = dialog.findViewById(R.id.setBtn);
 
-        hourEt.setFilters(new InputFilter[]{
-                new MinMaxFilter(0,24)
-        });
 
-        minuitEt.setFilters(new InputFilter[]{
-                new MinMaxFilter(0,59)
-        });
 
         String editTextText = mainEditText.getText().toString();
         String countHourTxt="0",countMinuitTxt="0";
 
-        if(editTextText.length()==3 && editTextText.charAt(0) != '0' && editTextText.charAt(2) != 0) {
+        if(editTextText.length()==5 && editTextText.charAt(0) != '0' && editTextText.charAt(2) != ':') {//for time format 1h:1m
             countHourTxt = String.valueOf(editTextText.charAt(0));
-            countMinuitTxt = String.valueOf(editTextText.charAt(2));
-            academicCb.setChecked(true);
-            academicCb.setEnabled(true);
-        }
-        else if(editTextText.length()==4 && editTextText.charAt(1)==':'){
-            countHourTxt = String.valueOf(editTextText.charAt(0));
-            countMinuitTxt = String.valueOf(editTextText.charAt(2)+editTextText.charAt(3));
-            academicCb.setChecked(true);
-            academicCb.setEnabled(true);
-        }
-        else if(editTextText.length()==4 && editTextText.charAt(2)==':'){
-            countHourTxt = String.valueOf(editTextText.charAt(0)+editTextText.charAt(1));
             countMinuitTxt = String.valueOf(editTextText.charAt(3));
             academicCb.setChecked(true);
             academicCb.setEnabled(true);
         }
-        else if(editTextText.length()==5){
-            countHourTxt = String.valueOf(editTextText.charAt(0)+editTextText.charAt(1));
-            countMinuitTxt = String.valueOf(editTextText.charAt(3)+editTextText.charAt(4));
+        else if(editTextText.length()==6 && editTextText.charAt(2)==':'){//for time format 1h:12m
+            countHourTxt = String.valueOf(editTextText.charAt(0));
+            countMinuitTxt = String.valueOf(editTextText.charAt(3))+String.valueOf(editTextText.charAt(4));
             academicCb.setChecked(true);
             academicCb.setEnabled(true);
         }
-        final String finalCountHourTxt = countHourTxt;
-        final String finalCountMinuitTxt2 = countMinuitTxt;
-        //if(timrDur.charAt(0)=='0' && )
-        final int[] countHour = {Integer.parseInt(finalCountHourTxt)},countMinuit = {Integer.parseInt(finalCountMinuitTxt2)};
-        hourEt.setText(""+Integer.parseInt(countHourTxt));
-        minuitEt.setText(""+Integer.parseInt(countMinuitTxt));
-       // final int countHour = 0;
-        hourPlusBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                countHour[0]++;
-                hourEt.setText(String.valueOf(countHour[0]));
-            }
-        });
-        hourMinusBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                countHour[0]--;
-                hourEt.setText(String.valueOf(countHour[0]));
-            }
-        });
+        else if(editTextText.length()==6 && editTextText.charAt(3)==':'){// 12h:1m
+            countHourTxt = String.valueOf(editTextText.charAt(0))+String.valueOf(editTextText.charAt(1));
+            countMinuitTxt = String.valueOf(editTextText.charAt(4));
+            academicCb.setChecked(true);
+            academicCb.setEnabled(true);
+        }
+        else if(editTextText.length()==7){//12h:12m
+            countHourTxt = String.valueOf(editTextText.charAt(0))+String.valueOf(editTextText.charAt(1));
+            countMinuitTxt = String.valueOf(editTextText.charAt(4))+String.valueOf(editTextText.charAt(5));
+            academicCb.setChecked(true);
+            academicCb.setEnabled(true);
+        }else {
+            countHourTxt = String.valueOf(editTextText.charAt(0));
+            countMinuitTxt = String.valueOf(editTextText.charAt(3));
+        }
 
-        minuitPlusBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                countMinuit[0]++;
-                minuitEt.setText(String.valueOf(countMinuit[0]));
-            }
-        });
-        minuitMinusBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                countMinuit[Integer.parseInt(finalCountMinuitTxt2)]--;
-                minuitEt.setText(String.valueOf(countMinuit[0]));
-            }
-        });
+        hourNumberPicker.setMinValue(0);
+        hourNumberPicker.setMaxValue(23);
 
-        setId.setOnClickListener(new View.OnClickListener() {
+        minuitNumberPicker.setMinValue(0);
+        minuitNumberPicker.setMaxValue(59);
+
+        //default number setting on numberpicker from edittext
+        hourNumberPicker.setValue(Integer.parseInt(countHourTxt));
+        minuitNumberPicker.setValue(Integer.parseInt(countMinuitTxt));
+        //hourNumberPicker.setDisplayedValues(hour);
+        /*NumberPicker.OnValueChangeListener onValueChangeListener = new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onClick(View view) {
-                if(hourEt.getText().toString().length()==0){
-                    hourEt.setText("0");
-                }
-                else if(minuitEt.getText().toString().length()==0){
-                    minuitEt.setText("0");
-                }
-                mainEditText.setText(hourEt.getText().toString()+"h"+":"+minuitEt.getText().toString()+"m");
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                Toast.makeText(AddReportActivity.this, ""+hourNumberPicker.getValue(), Toast.LENGTH_SHORT).show();
+            }
+        };*/
+        setBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainEditText.setText(hourNumberPicker.getValue()+"h:"+minuitNumberPicker.getValue()+"m");
                 dialog.dismiss();
             }
         });
-        cancelId.setOnClickListener(new View.OnClickListener() {
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 dialog.dismiss();
             }
         });
         dialog.show();
+
     }
 }
