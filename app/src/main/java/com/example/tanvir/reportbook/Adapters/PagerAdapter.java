@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.tanvir.reportbook.Fragments.MonthlyFragment;
 import com.example.tanvir.reportbook.Fragments.TodayFragment;
+import com.example.tanvir.reportbook.Fragments.YearlyFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int totalTab;
@@ -25,8 +26,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                MonthlyFragment monthlyFragment = new MonthlyFragment();
                return monthlyFragment;
            case 2:
-               TodayFragment todayFragment3 = new TodayFragment();
-               return todayFragment3;
+               YearlyFragment yearlyFragment = new YearlyFragment();
+               return yearlyFragment;
                default:
                    return null;
        }
