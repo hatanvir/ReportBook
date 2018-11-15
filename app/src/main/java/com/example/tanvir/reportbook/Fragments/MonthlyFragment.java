@@ -82,15 +82,8 @@ public class MonthlyFragment extends Fragment {
             for(;j<monthAndYear.length();j++){
                 year+=monthAndYear.charAt(j);
             }
-
-            //Toast.makeText(getActivity(), ""+month+" "+year+ new ReportDayMonthAndYearItem(month,year), Toast.LENGTH_SHORT).show();
             if(!reportDetails2.contains(month+" "+year) && !month.equals("0")){
-                //ReportDetails reportDetails1 = new ReportDetails(reportDetails.getId(),reportDetails.getPrayer(),reportDetails.getQuran(),
-                        //reportDetails.getHadith(),reportDetails.getAcademicBook(),reportDetails.getNovelOrOtherBook(),
-                       // reportDetails.getNewspaper(),reportDetails.getSkillDev(),reportDetails.getMarketing(),reportDetails.getWakeupTime(),
-                       // reportDetails.getSleepTime(),reportDetails.getWorkout());
-                //Toast.makeText(getActivity(), ""+reportDetails1.getId(), Toast.LENGTH_SHORT).show();
-                //ReportDayMonthAndYearItem reportDayMonthAndYearItem = new ReportDayMonthAndYearItem(month,year);
+
                 reportDetails2.add(month+" "+year);
             }
         }
@@ -106,7 +99,7 @@ public class MonthlyFragment extends Fragment {
         int calenderYear = calendar.get(Calendar.YEAR);
 
         if(date.length()==8){//checking here if date.length = 8 then this condition will work date format = 10 10 2018
-            day = String.valueOf(date.charAt(0)+date.charAt(1));
+            //day = String.valueOf(date.charAt(0)+date.charAt(1));
             month = String.valueOf(date.charAt(2))+String.valueOf(date.charAt(3));
             year = String.valueOf(date.charAt(4))+String.valueOf(date.charAt(5))+String.valueOf(date.charAt(6))+String.valueOf(date.charAt(7));
             if(String.valueOf(calenderYear).equals(year)){
@@ -117,7 +110,7 @@ public class MonthlyFragment extends Fragment {
         }
         //checking here if date.length = 7 and 1 no position is 0 then this condition will work date format = 1 01 2018
         else if(date.length()==7 && date.charAt(1)=='0'){
-            day = String.valueOf(date.charAt(0));
+            //day = String.valueOf(date.charAt(0));
             month = String.valueOf(date.charAt(2));
             year = String.valueOf(date.charAt(3))+String.valueOf(date.charAt(4))+String.valueOf(date.charAt(5))+String.valueOf(date.charAt(6));
             if(String.valueOf(calenderYear).equals(year)){
@@ -126,7 +119,7 @@ public class MonthlyFragment extends Fragment {
         }
         //checking here if date.length = 7 and 1 no position is not 0 then this condition will work date format = 1 10 2018
         else if(date.length()==7 && date.charAt(1)!='0') {
-            day = String.valueOf(date.charAt(0));
+            //day = String.valueOf(date.charAt(0));
             month = String.valueOf(date.charAt(1)) + String.valueOf(date.charAt(2));
             year = String.valueOf(date.charAt(3)) + String.valueOf(date.charAt(4)) + String.valueOf(date.charAt(5)) + String.valueOf(date.charAt(6));
             if (String.valueOf(calenderYear).equals(year)){
