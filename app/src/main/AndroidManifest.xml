@@ -7,12 +7,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/mainicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/mainicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.AddReportActivity" />
-        <activity android:name=".Activities.CalenderActivity"></activity>
+        <activity android:name=".Activities.CalenderActivity" />
+        <activity android:name=".Activities.DetailsActivity" />
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.settingsActivity"></activity>
     </application>
 
 </manifest>
